@@ -1,0 +1,4 @@
+.idea/
+out/
+src/document_generation/LawyersLetter/Sections
+src/document_generation/util/ManipDocument*

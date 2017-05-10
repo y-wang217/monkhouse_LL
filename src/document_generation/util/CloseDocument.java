@@ -14,7 +14,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 public class CloseDocument {
 
-    private static String defaultFileName = "myLetterDocument";
+    private static String defaultFileName = "myLetterDocument.docx";
 
     public static void closeSimple(XWPFDocument doc, String fileName){
 

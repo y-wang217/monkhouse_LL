@@ -2,8 +2,12 @@ package document_generation;
 
 import document_generation.LawyersLetter.Codes.SectionCode;
 import document_generation.LawyersLetter.LLDocument;
+import document_generation.LawyersLetter.LLParagraphFactory;
 import document_generation.LawyersLetter.LLSection;
 import document_generation.LawyersLetter.LLSectionFactory;
+import document_generation.LawyersLetter.Sections.AddresseeSection;
+import document_generation.LawyersLetter.Sections.OpeningSection;
+import document_generation.LawyersLetter.Sections.ReCaseSection;
 import document_generation.util.CloseDocument;
 
 import java.io.InputStream;
@@ -41,6 +45,9 @@ public class TextUI {
         Scanner sc = new Scanner(System.in);
         String input;
 
+        //initialize the opening, addressee, and re-case sections
+        test.init(doc);
+
         System.out.println("Please enter a section code");
         while(test.isWriting()){
             input = sc.nextLine();
@@ -73,7 +80,9 @@ public class TextUI {
     }
 
     private void init(LLDocument doc){
-
+        doc.writeToDoc(new OpeningSection(doc, new LLParagraphFactory()));
+        doc.writeToDoc(new AddresseeSection(doc, new LLParagraphFactory()));
+        doc.writeToDoc(new ReCaseSection(doc, new LLParagraphFactory()));
     }
 
 }

@@ -1,10 +1,7 @@
 package document_generation.LawyersLetter;
 
 import document_generation.LawyersLetter.Codes.SectionCode;
-import document_generation.LawyersLetter.Sections.EmploymentDescriptionSection;
-import document_generation.LawyersLetter.Sections.HeaderImageSection;
-import document_generation.LawyersLetter.Sections.OpeningSection;
-import document_generation.LawyersLetter.Sections.ReCaseSection;
+import document_generation.LawyersLetter.Sections.*;
 
 /**
  * Created by Yale Wang
@@ -22,6 +19,7 @@ public class LLSectionFactory {
             case OPEN: return new OpeningSection(doc, llpf);
             case RE:return new ReCaseSection(doc, llpf);
             case EMP_DESC: return new EmploymentDescriptionSection(doc, llpf);
+            case CUSTOM: return new CustomSection(doc, llpf);
             default: return new LLSection();
         }
     }

@@ -2,9 +2,7 @@ package document_generation.LawyersLetter;
 
 import document_generation.LawyersLetter.Codes.ParaCode;
 import document_generation.LawyersLetter.Codes.SectionCode;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**

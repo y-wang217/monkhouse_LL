@@ -1,5 +1,7 @@
 package document_generation.util;
 
+import document_generation.LawyersLetter.LLDocument;
+import org.apache.poi.ss.usermodel.FontFamily;
 import org.apache.poi.xwpf.usermodel.*;
 import org.apache.xmlbeans.XmlException;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTAbstractNum;
@@ -17,19 +19,20 @@ import java.math.BigInteger;
  */
 public class Numbering {
 
-    CTAbstractNum abstractNum = null;
-
-    public static void insertNumberedList(XWPFDocument doc, String content) {
-
+    public static void insertNumberedList(LLDocument doc, String content) {
         doc.createNumbering();
-        for (String value : content.split("@")) {
+        for (String value : content.split("%%")) {
             XWPFParagraph para = doc.createParagraph();
-            para.setNumID(doc.getNumbering().addNum(BigInteger.ONE));
+            para.setNumID(doc.resetNumbering().addNum(BigInteger.ONE));
+
             XWPFRun run = para.createRun();
+            run.setFontFamily("Times New Roman");
+
             setSingleLineSpacing(para);
             run.setText(value);
-            //para.setIndentFromLeft(950);
+//            para.setIndentFromLeft(50);
         }
+
     }
 
     public static void setSingleLineSpacing(XWPFParagraph para) {
@@ -45,8 +48,8 @@ public class Numbering {
 
     public static void main(String[] args) throws Exception {
 
-        XWPFDocument doc = new XWPFDocument();
-        new Numbering().insertNumberedList(doc, "First Level@Second Level@Second Level@First Level@five@six@seven@eight");
+        LLDocument doc = new LLDocument();
+        new Numbering().insertNumberedList(doc, "First Level%%Second Level%%Second Level%%First Level%%five%%six%%seven%%eight");
 
         CloseDocument.closeSimple(doc, "numberingTest.docx");
     }

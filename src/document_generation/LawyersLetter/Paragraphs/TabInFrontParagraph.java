@@ -14,8 +14,5 @@ public class TabInFrontParagraph extends LLParagraph {
     public TabInFrontParagraph(XWPFDocument doc){
         super(doc);
         this.setParaType(ParaCode.TAB);
-        XWPFParagraph p = doc.createParagraph();
-        p.setAlignment(ParagraphAlignment.LEFT);
-        this.setXwpfParagraph(p);
     }
 }

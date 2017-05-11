@@ -2,6 +2,7 @@ package document_generation.LawyersLetter;
 
 import document_generation.LawyersLetter.Codes.ParaCode;
 import document_generation.LawyersLetter.Codes.SectionCode;
+import document_generation.LawyersLetter.Paragraphs.ImageParagraph;
 
 import java.util.ArrayList;
 
@@ -12,12 +13,17 @@ import java.util.ArrayList;
  */
 public class LLSection {
 
-    public LLParagraph insertText(LLParagraphFactory llpf, LLDocument doc, ArrayList<LLParagraph> content,
+    public void insertText(LLParagraphFactory llpf, LLDocument doc, ArrayList<LLParagraph> content,
                                   ParaCode type, String textInPara){
+        if(type == ParaCode.IMAGE){
+            content.add(new ImageParagraph(doc,textInPara));
+            return;
+        }
         LLParagraph llParagraph = llpf.getParagraph(doc, type);
         llParagraph.setText(textInPara);
         content.add(llParagraph);
-        return llParagraph;
+        return;
+//        return llParagraph;
     }
 
     private ArrayList<LLParagraph>contents;

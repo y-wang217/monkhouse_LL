@@ -14,7 +14,7 @@ public class LLTest {
     public static void main(String[] args){
         LLSectionFactory llsf = new LLSectionFactory();
         LLDocument doc = new LLDocument();
-        LLSection open = llsf.getSection(doc, SectionCode.OPEN);
+        LLSection open = llsf.getSection(doc, SectionCode.OPENING);
 
         if(open.equals(null) || open.getContents().isEmpty()){
             //something went wrong
